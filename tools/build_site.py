@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ASSETS = ["icon.svg", "outputs.png", "formula.png", "ib-3stmt-is.png", "ib-lbo-returns.png", "ib-dcf-summary.png"]
+ASSETS = ["icon.svg"]
 
 
 def build(output: Path) -> None:
