@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="boki">
+  <rect x="3" y="3" width="122" height="122" rx="26" fill="#FFFFFF" stroke="#0F172A" stroke-width="6"/>
+  <!-- the T of a T-account: debit | credit -->
+  <rect x="20" y="28" width="88" height="9" rx="2" fill="#0F172A"/>
+  <rect x="50" y="28" width="11" height="74" rx="2" fill="#0F172A"/>
+  <!-- the bowl on the credit side makes it a b -->
+  <circle cx="71" cy="83" r="15.5" fill="none" stroke="#1D4ED8" stroke-width="11"/>
+</svg>

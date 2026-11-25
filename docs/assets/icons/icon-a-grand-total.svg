@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="boki">
+  <rect width="128" height="128" rx="28" fill="#0F172A"/>
+  <!-- b: stem and bowl -->
+  <rect x="34" y="18" width="13" height="66" rx="2" fill="#FFFFFF"/>
+  <circle cx="64" cy="64" r="19.5" fill="none" stroke="#FFFFFF" stroke-width="13"/>
+  <!-- the grand total's double rule -->
+  <rect x="28" y="96" width="72" height="5" rx="1" fill="#22C55E"/>
+  <rect x="28" y="106" width="72" height="5" rx="1" fill="#22C55E"/>
+</svg>

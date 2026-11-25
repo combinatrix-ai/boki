@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face { font-family: JBM; src: local("JetBrains Mono"); }
+body { margin:0; background:#fff; font-family:-apple-system,"Helvetica Neue",sans-serif; color:#0F172A; }
+.wrap { width:1640px; padding:30px; }
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+.wide { grid-column: span 2; }
+.cap { display:flex; justify-content:space-between; align-items:baseline; margin:0 2px 9px; }
+.cap b { font-size:17px; } .cap code { font:13.5px JBM,monospace; color:#57606A; background:#F6F8FA; border:1px solid #E5E7EB; border-radius:6px; padding:3px 8px; }
+.frame { border:1px solid #D1D5DB; border-radius:10px; overflow:hidden; box-shadow:0 8px 24px rgba(15,23,42,.08); background:#fff; }
+.frame img { display:block; width:100%; }
+.split { display:grid; grid-template-columns:1fr 1fr; }
+.split > div + div { border-left:2px dashed #CBD5E1; }
+.tag { font:600 12px -apple-system,sans-serif; letter-spacing:.04em; color:#57606A; padding:8px 14px 0; }
+</style></head><body><div class="wrap"><div class="grid">
+<div><div class="cap"><b>Investment banking</b><code>style=b.styles.banker</code></div><div class="frame"><img src="banker-usgaap-p-2-t.png"></div></div>
+<div><div class="cap"><b>SEC filing (10-K)</b><code>style=b.styles.sec</code></div><div class="frame"><img src="sec-usgaap-p-2-t.png"></div></div>
+<div class="wide"><div class="cap"><b>Same model, two standards</b><code>standard=b.USGAAP</code><code>standard=b.IFRS</code></div>
+<div class="frame split"><div><div class="tag">US GAAP</div><img src="banker-usgaap-p-3-t.png"></div><div><div class="tag">IFRS</div><img src="banker-ifrs-p-3-t.png"></div></div></div>
+</div></div></body></html>

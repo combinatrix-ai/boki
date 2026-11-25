@@ -1,0 +1,332 @@
+[module."boki"]
+names = ["CheckFailed", "CycleError", "EquivalenceError", "IFRS", "JGAAP", "LedgerError", "LineItem", "LineMaker", "Model", "Quantity", "Result", "Series", "Style", "USGAAP", "Unit", "UnitError", "above", "approx", "below", "between", "block", "by_month", "by_year", "calendar", "ceil", "compare", "curve", "date", "day", "delay", "even", "exp", "expect", "export", "fiscal", "floor", "h", "layouts", "lib", "link", "log", "max", "min", "mix", "mod", "month", "nol", "panel", "quarter", "round", "rounddown", "roundup", "row", "section", "sensitivity", "sheet", "sqrt", "step", "styles", "timeline", "unit", "units", "year"]
+
+[module."boki.units"]
+names = ["unit", "Unit", "Quantity", "UnitError", "USD", "JPY", "EUR", "GBP", "CNY", "W", "kW", "MW", "Wh", "kWh", "MWh", "day", "h", "month", "quarter", "year"]
+
+[module."boki.lib"]
+names = ["black_scholes", "capm", "compound", "discount", "fade", "gordon", "hamada", "index", "irr", "levelized", "lookup", "macrs", "nol", "npv", "pmt", "ssfa", "straight_line", "wacc", "xirr", "xnpv", "NoRateOfReturn"]
+
+[module."boki.shapes"]
+names = ["Kernel", "by_month", "by_year", "curve", "delay", "even", "mix", "spread", "step"]
+
+[module."boki.testing"]
+names = ["Bound", "Comparison", "Entry", "above", "approx", "below", "between", "compare", "expect"]
+
+[module."boki.export"]
+names = ["to_beancount"]
+
+[module."boki.layouts"]
+names = ["Layout", "Kind", "Stage", "Standard", "IFRS", "USGAAP", "JGAAP", "bank"]
+
+[type."Model"]
+path = "boki.Model"
+public = ["__init__", "check", "entity", "fx", "group", "input", "render", "series", "solve", "unknown"]
+readonly = ["actual_until", "date", "entities", "groups", "is_actual", "is_forecast", "n", "name", "period_end", "period_length", "t", "timeline"]
+internal = []
+
+[type."Result"]
+path = "boki.Result"
+public = ["__getitem__", "bs", "cf", "display_unit", "pl", "table", "to_excel", "value"]
+readonly = ["checks"]
+internal = ["__init__", "model"]
+
+[type."Entity"]
+receiver = "co"
+public = ["journal", "label", "load_actuals", "oci", "oci_release", "vat_settlement"]
+readonly = ["adjusted_ebitda", "amortization", "bs", "cf", "checks", "comprehensive_income", "currency", "depreciation", "ebit", "ebitda", "ebitdar", "fiscal", "language", "layout", "model", "name", "net_income", "noi", "operating_income", "other_comprehensive_income", "pl", "standard", "tax_rate"]
+internal = ["__init__", "retained_earnings"]
+
+[type."EntityChecks"]
+receiver = "co.checks"
+public = ["cash"]
+readonly = []
+internal = ["__init__", "cash_level"]
+
+[type."PL"]
+receiver = "co.pl"
+public = []
+readonly = ["gross_profit", "net_income", "net_interest_income", "operating_income", "ordinary_income", "pretax_income"]
+internal = ["__init__"]
+
+[type."BS"]
+receiver = "co.bs"
+public = ["asset", "deferred_tax", "liability", "opening", "sell"]
+readonly = ["cash", "equity", "retained_earnings", "total_assets", "total_equity", "total_liabilities"]
+internal = ["__init__"]
+
+[type."CF"]
+receiver = "co.cf"
+public = ["financing", "financing_excluding", "fx", "investing", "operating"]
+readonly = []
+internal = ["__init__"]
+
+[type."LineMaker"]
+path = "boki.LineMaker"
+public = ["__call__", "total_of"]
+readonly = ["entity", "items", "kind", "opening", "total"]
+internal = ["__init__"]
+
+[type."LineItem"]
+path = "boki.LineItem"
+public = ["__abs__", "__add__", "__and__", "__eq__", "__floordiv__", "__ge__", "__getitem__", "__gt__", "__invert__", "__le__", "__lt__", "__mod__", "__mul__", "__ne__", "__neg__", "__or__", "__pow__", "__radd__", "__rand__", "__rfloordiv__", "__rmod__", "__rmul__", "__ror__", "__rpow__", "__rsub__", "__rtruediv__", "__sub__", "__truediv__", "balance", "capitalized_interest", "cumsum", "define", "depreciation", "draw", "draw_or_repay", "interest", "interest_expense", "lag", "last", "max", "mean", "min", "nol", "reverse_cumsum", "spread", "sum", "where"]
+readonly = ["category", "change", "counterparty", "entity", "kind", "layout", "month", "name", "opening", "principal", "standard", "unit", "year"]
+internal = ["__init__", "account", "book", "display", "expr", "net_investment", "scalar"]
+
+[type."Series"]
+path = "boki.Series"
+public = ["__abs__", "__add__", "__and__", "__eq__", "__floordiv__", "__ge__", "__getitem__", "__gt__", "__invert__", "__le__", "__lt__", "__mod__", "__mul__", "__ne__", "__neg__", "__or__", "__pow__", "__radd__", "__rand__", "__rfloordiv__", "__rmod__", "__rmul__", "__ror__", "__rpow__", "__rsub__", "__rtruediv__", "__sub__", "__truediv__", "cumsum", "define", "lag", "last", "max", "mean", "min", "reverse_cumsum", "spread", "sum", "where"]
+readonly = ["change", "month", "name", "opening", "unit", "year"]
+internal = ["__init__", "display", "expr", "scalar"]
+
+[type."Named"]
+receiver = "m.series()"
+public = ["__getitem__", "cumsum", "define", "lag", "last", "max", "mean", "min", "reverse_cumsum", "spread", "sum", "where"]
+readonly = ["change", "month", "name", "opening", "unit", "year"]
+internal = ["__init__", "display", "expr", "scalar"]
+
+[type."Group"]
+receiver = "m.group"
+public = ["own"]
+readonly = ["adjusted_ebitda", "amortization", "books", "depreciation", "ebit", "ebitda", "ebitdar", "model", "name", "noi", "operating_income", "parent"]
+internal = ["__init__"]
+
+[type."Unit"]
+path = "boki.units.Unit"
+public = ["__mul__", "__pow__", "__rmul__", "__rtruediv__", "__truediv__"]
+readonly = ["dims", "name", "scale"]
+internal = ["__init__"]
+
+[type."Quantity"]
+path = "boki.units.Quantity"
+public = ["__abs__", "__add__", "__ge__", "__gt__", "__le__", "__lt__", "__mul__", "__neg__", "__pow__", "__radd__", "__rmul__", "__rsub__", "__rtruediv__", "__sub__", "__truediv__"]
+readonly = ["dims", "value"]
+internal = ["__float__", "__init__", "of", "shown", "where"]
+
+[type."FxPair"]
+receiver = "m.fx"
+public = []
+readonly = ["average", "base", "closing", "opening", "quote"]
+internal = ["__init__"]
+
+[type."Input"]
+receiver = "m.input"
+public = ["cumsum", "lag", "last", "max", "mean", "min", "reverse_cumsum", "spread", "sum", "where"]
+readonly = ["change", "choices", "default", "month", "name", "note", "opening", "scenarios", "source", "unit", "year"]
+internal = ["__init__", "display", "resolve", "scalar", "shown"]
+
+[type."Unknown"]
+receiver = "m.unknown"
+public = ["cumsum", "lag", "last", "max", "mean", "min", "reverse_cumsum", "spread", "sum", "where"]
+readonly = ["change", "init", "month", "name", "opening", "unit", "year"]
+internal = ["__init__", "display", "scalar"]
+
+[type."Timeline"]
+receiver = "m.timeline"
+public = []
+readonly = ["n", "periods", "regular"]
+internal = ["__init__", "index"]
+
+[type."Period"]
+receiver = "m.timeline.periods[0]"
+public = []
+readonly = ["end", "end_date", "label", "months", "start"]
+internal = ["__init__"]
+
+[type."Fiscal"]
+receiver = "b.fiscal"
+public = []
+readonly = ["change", "label", "year_end"]
+internal = ["__init__"]
+
+[type."Calendar"]
+receiver = "b.calendar"
+public = ["days"]
+readonly = ["closed", "holidays"]
+internal = ["__init__", "model"]
+
+[type."Kernel"]
+path = "boki.shapes.Kernel"
+public = []
+readonly = ["name", "weights"]
+internal = ["__init__"]
+
+[type."Style"]
+path = "boki.Style"
+public = ["__call__", "__init__", "replace"]
+readonly = ["band", "colors", "columns", "decimals", "dollars", "expenses", "font", "gridlines", "header", "helpers", "hide", "language", "money", "name", "negatives", "periods", "ratios", "shade", "statements", "titles", "units", "zero"]
+internal = ["caption", "dollar_format", "heading_format", "label", "number_format", "percent_format", "period_label", "scale"]
+
+[type."StylePresets"]
+path = "boki.styles.styles"
+public = []
+readonly = ["banker", "japanese", "plain", "sec"]
+internal = ["__init__"]
+
+[type."Bound"]
+path = "boki.testing.Bound"
+public = []
+readonly = []
+internal = ["__init__", "base", "hi", "holds", "lo", "strict", "text"]
+
+[type."Comparison"]
+path = "boki.testing.Comparison"
+public = []
+readonly = ["entries", "mismatches"]
+internal = ["__init__"]
+
+[type."Entry"]
+path = "boki.testing.Entry"
+public = []
+readonly = ["diff", "got", "label", "ok", "period", "want"]
+internal = ["__init__"]
+
+[type."CheckResult"]
+receiver = "r.checks[0]"
+public = []
+readonly = ["detail", "level", "name", "passed", "periods"]
+internal = ["__init__"]
+
+[type."PlacementLine"]
+receiver = "b.row"
+public = []
+readonly = ["fmt", "formula", "label", "scale", "series", "sign", "total", "verify"]
+internal = ["__init__"]
+
+[type."Section"]
+receiver = "b.section"
+public = []
+readonly = ["entries", "title"]
+internal = ["__init__"]
+
+[type."Sheet"]
+receiver = "b.sheet"
+public = []
+readonly = ["entries", "money", "name"]
+internal = ["__init__"]
+
+[type."Link"]
+receiver = "b.link"
+public = []
+readonly = ["fmt", "label", "sign", "target", "total"]
+internal = ["__init__"]
+
+[type."Block"]
+receiver = "b.block"
+public = []
+readonly = ["fmt", "label", "rows", "sign", "target", "total", "verify"]
+internal = ["__init__"]
+
+[type."Panel"]
+receiver = "b.panel"
+public = []
+readonly = ["columns", "rows", "title"]
+internal = ["__init__"]
+
+[type."Sensitivity"]
+receiver = "b.sensitivity"
+public = []
+readonly = ["col_fmt", "col_values", "corner", "fmt", "formula", "highlight", "row_fmt", "row_values", "title"]
+internal = ["__init__"]
+
+[type."Table"]
+receiver = "r.table"
+public = []
+readonly = ["columns", "rows", "title"]
+internal = ["__init__", "row"]
+
+[type."Report"]
+receiver = "r.to_excel"
+public = []
+readonly = ["data", "formulas", "guarded", "reasons", "unnamed", "unplaced", "values"]
+internal = ["__init__"]
+
+[type."CircularReferenceWarning"]
+path = "boki.excel.CircularReferenceWarning"
+public = []
+readonly = []
+internal = []
+
+[type."Untranslatable"]
+path = "boki.excel.Untranslatable"
+public = []
+readonly = []
+internal = []
+
+[type."UnnamedAssumption"]
+path = "boki.excel.UnnamedAssumption"
+public = []
+readonly = []
+internal = []
+
+[type."EquivalenceError"]
+path = "boki.EquivalenceError"
+public = []
+readonly = []
+internal = []
+
+[type."CheckFailed"]
+path = "boki.CheckFailed"
+public = []
+readonly = ["failures", "result"]
+internal = []
+
+[type."LedgerError"]
+path = "boki.LedgerError"
+public = []
+readonly = []
+internal = []
+
+[type."CycleError"]
+path = "boki.CycleError"
+public = []
+readonly = ["chain"]
+internal = []
+
+[type."UnitError"]
+path = "boki.UnitError"
+public = []
+readonly = []
+internal = []
+
+[type."NoRateOfReturn"]
+path = "boki.lib.NoRateOfReturn"
+public = []
+readonly = []
+internal = []
+
+[type."NOL"]
+receiver = "tax.nol"
+public = []
+readonly = ["balance", "taxable", "used"]
+internal = ["count", "index"]
+
+[type."Equity"]
+receiver = "co.bs.equity"
+public = []
+readonly = ["total"]
+internal = ["__init__"]
+
+[type."Layout"]
+path = "boki.layouts.Layout"
+public = ["__init__", "bs_kind"]
+readonly = ["bs", "depreciation_kind", "income_kinds", "interest_kind", "name", "pl", "pl_kinds", "stages"]
+internal = []
+
+[type."Kind"]
+path = "boki.layouts.Kind"
+public = ["__init__"]
+readonly = ["cf", "contra", "mechanism", "name", "section", "side", "tags"]
+internal = []
+
+[type."Stage"]
+path = "boki.layouts.Stage"
+public = ["__init__"]
+readonly = ["formula", "name"]
+internal = []
+
+[type."Standard"]
+path = "boki.layouts.Standard"
+public = ["__init__"]
+readonly = ["bs_order", "display", "general", "labels", "name"]
+internal = []

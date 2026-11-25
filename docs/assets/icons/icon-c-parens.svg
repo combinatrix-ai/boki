@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="boki">
+  <rect width="128" height="128" rx="28" fill="#FFFFFF"/>
+  <rect x="2" y="2" width="124" height="124" rx="26" fill="none" stroke="#E5E7EB" stroke-width="4"/>
+  <!-- banker parentheses -->
+  <path d="M34 22 C14 44 14 84 34 106" fill="none" stroke="#15803D" stroke-width="9" stroke-linecap="round"/>
+  <path d="M94 22 C114 44 114 84 94 106" fill="none" stroke="#15803D" stroke-width="9" stroke-linecap="round"/>
+  <!-- b -->
+  <rect x="45" y="30" width="11" height="62" rx="2" fill="#0F172A"/>
+  <circle cx="66" cy="74" r="15" fill="none" stroke="#0F172A" stroke-width="11"/>
+</svg>
